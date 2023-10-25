@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class PersonController {
 
     private final PersonRepository personRepository;
@@ -21,7 +22,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @GetMapping("/getOnePerson/{id}")
+    @GetMapping("/persons/{id}")
     public ResponseEntity<Person> getOnePerson(@PathVariable Long id) {
         Optional<Person> person = personRepository.findById(id); // Mozna uzyc orElseThrow()
         if (person.isPresent()) {
@@ -30,7 +31,7 @@ public class PersonController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/getAllPersons")
+    @GetMapping("/persons/")
     public ResponseEntity<List<Person>> getAllPersons() {
         List<Person> personList = new ArrayList<>(personRepository.findAll());
         if (personList.isEmpty()) {
@@ -39,16 +40,16 @@ public class PersonController {
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
 
-    @PostMapping("/addPerson")
+    @PostMapping("/persons/create")
     public ResponseEntity<Person> addPerson(@RequestBody Person person) {
         return new ResponseEntity<>(personRepository.save(person), HttpStatus.CREATED);
     }
 
-    @PutMapping("/updatePerson/{id}")
+    @PutMapping("/persons/{id}/update")
     public ResponseEntity<Person> updatePerson(@RequestBody Person personUpdated, @PathVariable Long id) {
-        Optional<Person> personOptional = personRepository.findById(id);
-        if (personOptional.isPresent()) {
-            Person person = personOptional.get();
+        Optional<Person> personFromDB = personRepository.findById(id);
+        if (personFromDB.isPresent()) {
+            Person person = personFromDB.get();
             person.setName(personUpdated.getName());
             person.setAge(personUpdated.getAge());
             return new ResponseEntity<>(personRepository.save(person), HttpStatus.OK);
@@ -56,7 +57,7 @@ public class PersonController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/deletePerson/{id}")
+    @DeleteMapping("/persons/{id}/delete")
     public ResponseEntity<Person> deletePerson(@PathVariable Long id) {
         Optional<Person> person = personRepository.findById(id);
         if (person.isPresent()) {
