@@ -8,10 +8,14 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - Spring Web
 - Spring Data JPA
 - H2 Database
+- Lombok
 - SpringDoc Open API
 - SpringFox Swagger UI
 #### Zmiany w ostatnim commicie 
-- Dodano stronicowanie - Paginacje
+- Dodano Lombok
+- Dodano Encje Car
+- Dodanie metod hashCode() i equals() 
+- Dodano relacje OneToMany - unidirectional(Person -> Car)
 #### Dodatkowe informacje
 - Podstawowe operacje GET, POST, PUT, DELETE
 - Inicjalizacja bazy danych z pliku
@@ -28,8 +32,7 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 
 - Dodanie testów jednostkowych
 - Dodanie metod np.PATH
-- Dodanie metod hashCode() i equals() przy implementacji relacji i uzywaniu kolekcji w polach encji
-- Dodanie relacji OneToOne
-- Dodanie relacji OneToMany
-- Dodanie relacji ManyToMany
+- Dodanie relacji OneToOne (unidirectional & bidirectional)
+- Dodanie relacji OneToMany (bidirectional)
+- Dodanie relacji ManyToMany (unidirectional & bidirectional)
 - Dodanie DTO

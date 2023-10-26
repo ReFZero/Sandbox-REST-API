@@ -1,3 +1,4 @@
+-- UZUPELNIENIE TABELI PERSON
 insert into person (name, age) values ('Toiboid', 22);
 insert into person (name, age) values ('David', 40);
 insert into person (name, age) values ('Dunstan', 95);
@@ -52,3 +53,35 @@ insert into person (name, age) values ('Nell', 27);
 insert into person (name, age) values ('Roxie', 92);
 insert into person (name, age) values ('Jephthah', 93);
 insert into person (name, age) values ('Maynord', 20);
+
+-- UZUPELNIENIE TABELI CAR
+insert into car (brand, production_year, person_id) values ('Cadillac', 2005, 10);
+insert into car (brand, production_year, person_id) values ('Maserati', 2004, 17);
+insert into car (brand, production_year, person_id) values ('Buick', 1999, 17);
+insert into car (brand, production_year, person_id) values ('Chevrolet', 2007, 4);
+insert into car (brand, production_year, person_id) values ('Hyundai', 1998, 14);
+insert into car (brand, production_year, person_id) values ('Mercedes-Benz', 1992, 14);
+insert into car (brand, production_year, person_id) values ('Plymouth', 1994, 14);
+insert into car (brand, production_year, person_id) values ('Dodge', 1999, 17);
+insert into car (brand, production_year, person_id) values ('Mercury', 1997, 12);
+insert into car (brand, production_year, person_id) values ('Mercedes-Benz', 1989, 8);
+insert into car (brand, production_year, person_id) values ('Mercedes-Benz', 2001, 14);
+insert into car (brand, production_year, person_id) values ('Ford', 1983, 2);
+insert into car (brand, production_year, person_id) values ('Lexus', 2009, 19);
+insert into car (brand, production_year, person_id) values ('Isuzu', 1994, 15);
+insert into car (brand, production_year, person_id) values ('BMW', 2005, 9);
+insert into car (brand, production_year, person_id) values ('Lexus', 2011, 7);
+insert into car (brand, production_year, person_id) values ('Pontiac', 1987, 10);
+insert into car (brand, production_year, person_id) values ('Volvo', 2003, 10);
+insert into car (brand, production_year, person_id) values ('Honda', 2001, 8);
+insert into car (brand, production_year, person_id) values ('Volkswagen', 2000, 16);
+insert into car (brand, production_year, person_id) values ('Ford', 1998, 8);
+insert into car (brand, production_year, person_id) values ('Nissan', 2008, 5);
+insert into car (brand, production_year, person_id) values ('Audi', 1995, 18);
+insert into car (brand, production_year, person_id) values ('Isuzu', 1994, 17);
+insert into car (brand, production_year, person_id) values ('Subaru', 1995, 18);
+insert into car (brand, production_year, person_id) values ('Mercury', 1987, 7);
+insert into car (brand, production_year, person_id) values ('GMC', 2000, 7);
+insert into car (brand, production_year, person_id) values ('Chevrolet', 2002, 9);
+insert into car (brand, production_year, person_id) values ('Buick', 2010, 9);
+insert into car (brand, production_year, person_id) values ('Volkswagen', 1993, 2);
