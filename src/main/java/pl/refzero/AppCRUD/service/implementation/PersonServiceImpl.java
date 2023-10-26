@@ -1,14 +1,18 @@
 package pl.refzero.AppCRUD.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.refzero.AppCRUD.exceptions.PersonNotFoundException;
 import pl.refzero.AppCRUD.model.Person;
 import pl.refzero.AppCRUD.repository.PersonRepository;
 import pl.refzero.AppCRUD.service.PersonService;
 
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -27,8 +31,10 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> getAllPersons() {
-        return personRepository.findAll().stream().collect(Collectors.toList());
+    public List<Person> getAllPersons(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+        Page<Person> persons = personRepository.findAll(pageable);
+        return new ArrayList<>(persons.getContent());
     }
 
     @Override

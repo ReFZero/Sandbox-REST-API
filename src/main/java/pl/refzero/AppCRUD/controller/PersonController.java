@@ -26,8 +26,11 @@ public class PersonController {
     }
 
     @GetMapping("/persons")
-    public ResponseEntity<List<Person>> getAllPersons() {
-       return new ResponseEntity<>(personService.getAllPersons(),HttpStatus.OK);
+    //Np: "api/persons?pageNo=5&pageSize=20"
+    public ResponseEntity<List<Person>> getAllPersons(
+            @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
+       return new ResponseEntity<>(personService.getAllPersons(pageNo,pageSize),HttpStatus.OK);
     }
 
     @PostMapping("/persons/create")
