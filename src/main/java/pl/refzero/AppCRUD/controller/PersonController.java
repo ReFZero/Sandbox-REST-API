@@ -4,68 +4,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.refzero.AppCRUD.exceptions.PersonNotFoundException;
 import pl.refzero.AppCRUD.model.Person;
-import pl.refzero.AppCRUD.repository.PersonRepository;
+import pl.refzero.AppCRUD.service.PersonService;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class PersonController {
 
-    private final PersonRepository personRepository;
+    private final PersonService personService;
 
     @Autowired
-    public PersonController(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
     @GetMapping("/persons/{id}")
     public ResponseEntity<Person> getOnePerson(@PathVariable Long id) {
-        Optional<Person> person = Optional.ofNullable(personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException("Person could not find")));
-        if (person.isPresent()) {
-            return new ResponseEntity<>(person.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(personService.getPersonById(id),HttpStatus.OK);
     }
 
     @GetMapping("/persons")
     public ResponseEntity<List<Person>> getAllPersons() {
-        List<Person> personList = new ArrayList<>(personRepository.findAll());
-        if (personList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(personList, HttpStatus.OK);
+       return new ResponseEntity<>(personService.getAllPersons(),HttpStatus.OK);
     }
 
     @PostMapping("/persons/create")
     public ResponseEntity<Person> addPerson(@RequestBody Person person) {
-        return new ResponseEntity<>(personRepository.save(person), HttpStatus.CREATED);
+        return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
     }
 
     @PutMapping("/persons/{id}/update")
     public ResponseEntity<Person> updatePerson(@RequestBody Person personUpdated, @PathVariable Long id) {
-        Optional<Person> personFromDB = personRepository.findById(id);
-        if (personFromDB.isPresent()) {
-            Person person = personFromDB.get();
-            person.setName(personUpdated.getName());
-            person.setAge(personUpdated.getAge());
-            return new ResponseEntity<>(personRepository.save(person), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    return new ResponseEntity<>(personService.updatePerson(personUpdated,id),HttpStatus.OK);
     }
 
     @DeleteMapping("/persons/{id}/delete")
-    public ResponseEntity<Person> deletePerson(@PathVariable Long id) {
-        Optional<Person> person = personRepository.findById(id);
-        if (person.isPresent()) {
-            personRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
+        personService.deletePersonById(id);
+   return new ResponseEntity<>("Person deleted",HttpStatus.OK);
     }
 }
 
