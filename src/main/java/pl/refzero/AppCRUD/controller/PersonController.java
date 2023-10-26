@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.refzero.AppCRUD.exceptions.PersonNotFoundException;
 import pl.refzero.AppCRUD.model.Person;
 import pl.refzero.AppCRUD.repository.PersonRepository;
 
@@ -24,14 +25,14 @@ public class PersonController {
 
     @GetMapping("/persons/{id}")
     public ResponseEntity<Person> getOnePerson(@PathVariable Long id) {
-        Optional<Person> person = personRepository.findById(id); // Mozna uzyc orElseThrow()
+        Optional<Person> person = Optional.ofNullable(personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException("Person could not find")));
         if (person.isPresent()) {
             return new ResponseEntity<>(person.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/persons/")
+    @GetMapping("/persons")
     public ResponseEntity<List<Person>> getAllPersons() {
         List<Person> personList = new ArrayList<>(personRepository.findAll());
         if (personList.isEmpty()) {
