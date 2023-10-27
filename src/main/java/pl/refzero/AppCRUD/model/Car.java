@@ -1,5 +1,6 @@
 package pl.refzero.AppCRUD.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,8 @@ public class Car {
     private String brand;
     @Column(name = "production_year")
     private Integer productionYear;
-    private Long personId;
 
+    @ManyToOne()
+    @JsonIgnoreProperties("carList")
+    private Person person;
 }

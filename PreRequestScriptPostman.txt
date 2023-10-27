@@ -39,12 +39,20 @@ pm.environment.set("random_person_id", _.random(1, 30));
 KLASA CAR:
 POST addCar()
 *******************************************
------W sytuacji gdy chemy dodac tylko jeden samochod
+-----W sytuacji gdy chcemy dodac tylko jeden samochod (OneToMany - unidirectional)
 Body:
 {
     "brand": "{{random_brand}}",
     "productionYear" : {{random_production_year}},
     "personId": {{random_person_id}}
+}
+-----W sytuacji gdy chcemy dodac tylko jeden samochod (OneToMany - bidirectional)
+{
+    "brand": "{{random_brand}}",
+    "productionYear": {{random_production_year}},
+    "person": {
+       "id": {{random_person_id}}
+    }
 }
 -------------------------------------------
 Pre-Request Script:

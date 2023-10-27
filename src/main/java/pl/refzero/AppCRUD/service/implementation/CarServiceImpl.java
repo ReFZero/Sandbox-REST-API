@@ -48,7 +48,7 @@ public class CarServiceImpl implements CarService {
                 () -> new CarNotFoundException("Car could not be found"));
         carFromDB.setBrand(car.getBrand());
         carFromDB.setProductionYear(car.getProductionYear());
-        carFromDB.setPersonId(car.getPersonId());
+        carFromDB.setPerson(car.getPerson());
         return carRepository.save(carFromDB);
     }
 
