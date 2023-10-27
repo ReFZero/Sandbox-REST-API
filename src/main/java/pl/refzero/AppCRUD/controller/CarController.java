@@ -18,9 +18,9 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping("/cars/{id}")
-    public ResponseEntity<Car> getCarById(@PathVariable Long id) {
-        return new ResponseEntity<>(carService.getCarById(id), HttpStatus.OK);
+    @GetMapping("/cars/{carId}")
+    public ResponseEntity<Car> getCarById(@PathVariable(value = "carId") Long carId) {
+        return new ResponseEntity<>(carService.getCarById(carId), HttpStatus.OK);
     }
 
     @GetMapping("/cars")
@@ -35,14 +35,22 @@ public class CarController {
         return new ResponseEntity<>(carService.createCar(car), HttpStatus.CREATED);
     }
 
-    @PutMapping("cars/{id}/update")
-    public ResponseEntity<Car> updateCar(@RequestBody Car car, @PathVariable Long id) {
-        return new ResponseEntity<>(carService.updateCar(car, id), HttpStatus.OK);
+    @PutMapping("cars/{carId}/update")
+    public ResponseEntity<Car> updateCar(
+            @RequestBody Car car,
+            @PathVariable(value = "carId") Long carId) {
+        return new ResponseEntity<>(carService.updateCar(car, carId), HttpStatus.OK);
     }
 
-    @DeleteMapping("/cars/{id}/delete")
-    public ResponseEntity<String> deleteCar(@PathVariable Long id) {
-        carService.deleteCarById(id);
+    @DeleteMapping("/cars/{carId}/delete")
+    public ResponseEntity<String> deleteCar(@PathVariable(value = "carId") Long carId) {
+        carService.deleteCarById(carId);
         return new ResponseEntity<>("Car deleted", HttpStatus.OK);
+    }
+
+    // Query Methods
+    @GetMapping("/persons/{personId}/cars")
+    public ResponseEntity<List<Car>> getCarsByPersonId(@PathVariable(value = "personId") Long personId){
+        return new ResponseEntity<>(carService.getCarsByPersonId(personId), HttpStatus.OK);
     }
 }

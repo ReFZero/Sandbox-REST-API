@@ -20,9 +20,9 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/persons/{id}")
-    public ResponseEntity<Person> getOnePerson(@PathVariable Long id) {
-        return new ResponseEntity<>(personService.getPersonById(id),HttpStatus.OK);
+    @GetMapping("/persons/{personId}")
+    public ResponseEntity<Person> getOnePerson(@PathVariable(value = "personId") Long personId) {
+        return new ResponseEntity<>(personService.getPersonById(personId),HttpStatus.OK);
     }
 
     @GetMapping("/persons")
@@ -38,14 +38,16 @@ public class PersonController {
         return new ResponseEntity<>(personService.createPerson(person), HttpStatus.CREATED);
     }
 
-    @PutMapping("/persons/{id}/update")
-    public ResponseEntity<Person> updatePerson(@RequestBody Person personUpdated, @PathVariable Long id) {
-    return new ResponseEntity<>(personService.updatePerson(personUpdated,id),HttpStatus.OK);
+    @PutMapping("/persons/{personId}/update")
+    public ResponseEntity<Person> updatePerson(
+            @RequestBody Person personUpdated,
+            @PathVariable(value = "personId") Long personId) {
+    return new ResponseEntity<>(personService.updatePerson(personUpdated,personId),HttpStatus.OK);
     }
 
-    @DeleteMapping("/persons/{id}/delete")
-    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
-        personService.deletePersonById(id);
+    @DeleteMapping("/persons/{personId}/delete")
+    public ResponseEntity<String> deletePerson(@PathVariable(value = "personId") Long personId) {
+        personService.deletePersonById(personId);
    return new ResponseEntity<>("Person deleted",HttpStatus.OK);
     }
 }

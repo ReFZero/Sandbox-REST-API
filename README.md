@@ -12,13 +12,14 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - SpringDoc Open API
 - SpringFox Swagger UI
 #### Zmiany w ostatnim commicie:
-- Dodano relacje OneToMany - bidirectional(Person <-> Car)
+- Dodano Query Methods (wyszukiwanie samochodów po id osoby)
 #### Dodatkowe informacje:
 - Podstawowe operacje GET, POST, PUT, DELETE
 - Inicjalizacja bazy danych z pliku
 - Endpointy zgodne ze standardem
 - Dodano Lombok
 - Dodano Swagger
+- Dodano relacje OneToMany - bidirectional(Person <-> Car)
 - Dodano plik tekstowy PreRequestScriptPostman w którym znajduja sie skrypty do Postmana
 - ~~Dodano relacje OneToMany - unidirectional(Person -> Car)~~
 
