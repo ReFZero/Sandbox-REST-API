@@ -11,24 +11,27 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - Lombok
 - SpringDoc Open API
 - SpringFox Swagger UI
-#### Zmiany w ostatnim commicie 
-- Dodano Lombok
-- Dodano Encje Car
-- Dodanie metod hashCode() i equals() 
-- Dodano relacje OneToMany - unidirectional(Person -> Car)
-#### Dodatkowe informacje
+#### Zmiany w ostatnim commicie:
+- Dodano Service i Controller dla encji Car
+- Dodano wyjatek dla encji Car
+- Dodano plik tekstowy PreRequestScriptPostman w którym znajduja sie skrypty do Postmana
+#### Dodatkowe informacje:
 - Podstawowe operacje GET, POST, PUT, DELETE
 - Inicjalizacja bazy danych z pliku
-- Zmiana endpointów na zgodne ze standardem
-- Dodanie Swaggera
-- Dodanie własnego wyjatku dotyczacego pobierania danych o osobach
-- Dodanie Service do aplikacji
-- Refaktoryzacja metod Controllera
+- Endpointy zgodne ze standardem
+- Dodano Lombok
+- Dodano Swagger
 - Zwiekszona liczba rekordów w bazie 
+- Dodano relacje OneToMany - unidirectional(Person -> Car)
+- ~~Dodanie własnego wyjatku dotyczacego pobierania danych o osobach~~
+- ~~Dodanie Service do aplikacji~~
+- ~~Refaktoryzacja metod Controllera~~
+- ~~Dodano Encje Car~~
+- ~~Dodanie metod hashCode() i equals()~~
 - ~~Metody komnikujace sie bezposrenio z Repozytorium zwracają ResponseEntity~~
 - ~~Baza wypełniana jest przy użyciu @EventListener~~
 
-#### TO DO
+#### TO DO:
 
 - Dodanie testów jednostkowych
 - Dodanie metod np.PATH

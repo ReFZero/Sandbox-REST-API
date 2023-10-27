@@ -1,4 +1,4 @@
-package pl.refzero.AppCRUD.exceptions;
+package pl.refzero.AppCRUD.exceptions.customExceptions;
 
 public class PersonNotFoundException extends RuntimeException{
 
