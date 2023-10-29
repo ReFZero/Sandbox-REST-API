@@ -48,9 +48,14 @@ public class CarController {
         return new ResponseEntity<>("Car deleted", HttpStatus.OK);
     }
 
-    // Query Methods
     @GetMapping("/persons/{personId}/cars")
-    public ResponseEntity<List<Car>> getCarsByPersonId(@PathVariable(value = "personId") Long personId){
+    public ResponseEntity<List<Car>> getCarsByPersonId(@PathVariable(value = "personId") Long personId) {
         return new ResponseEntity<>(carService.getCarsByPersonId(personId), HttpStatus.OK);
+    }
+
+    @GetMapping("/persons/{personId}/cars/{carId}")
+    public ResponseEntity<Car> getOneCarByPersonId(@PathVariable(value = "carId") Long carId,
+                                                   @PathVariable(value = "personId") Long personId) {
+        return new ResponseEntity<>(carService.getCarById(carId, personId), HttpStatus.OK);
     }
 }

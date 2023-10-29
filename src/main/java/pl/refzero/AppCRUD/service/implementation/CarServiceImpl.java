@@ -6,9 +6,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.refzero.AppCRUD.exceptions.customExceptions.CarNotFoundException;
+import pl.refzero.AppCRUD.exceptions.customExceptions.PersonNotFoundException;
 import pl.refzero.AppCRUD.model.Car;
+import pl.refzero.AppCRUD.model.Person;
 import pl.refzero.AppCRUD.repository.CarRepository;
+import pl.refzero.AppCRUD.repository.PersonRepository;
 import pl.refzero.AppCRUD.service.CarService;
+import pl.refzero.AppCRUD.service.PersonService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +23,12 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
+    private final PersonRepository personRepository;
 
     @Autowired
-    public CarServiceImpl(CarRepository carRepository) {
+    public CarServiceImpl(CarRepository carRepository, PersonRepository personRepository) {
         this.carRepository = carRepository;
+        this.personRepository = personRepository;
     }
 
 
@@ -62,5 +68,15 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> getCarsByPersonId(Long personId) {
         return carRepository.findByPersonId(personId).stream().collect(Collectors.toList());
+    }
+
+    @Override
+    public Car getCarById(Long carId, Long personId) {
+        Person person = personRepository.findById(personId).orElseThrow(() -> new PersonNotFoundException("Person could not be found"));
+        Car car = carRepository.findById(carId).orElseThrow(() -> new CarNotFoundException("Car with associate person not found"));
+        if (!car.getPerson().getId().equals(person.getId())) {
+            throw new CarNotFoundException("This car does not belong to a person");
+        }
+        return car;
     }
 }

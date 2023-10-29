@@ -1,4 +1,5 @@
 package pl.refzero.AppCRUD.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,4 +25,7 @@ public class Person {
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("person")
     private List<Car> carList = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 }
