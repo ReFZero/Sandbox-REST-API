@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import pl.refzero.AppCRUD.exceptions.customExceptions.AddressNotFoundException;
 import pl.refzero.AppCRUD.exceptions.customExceptions.CarNotFoundException;
 import pl.refzero.AppCRUD.exceptions.customExceptions.PersonNotFoundException;
 
@@ -32,5 +33,16 @@ public class GlobalExceptionHandler {
         errorObject.setTimestamp(new Date());
 
         return new ResponseEntity<>(errorObject, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<ErrorObject> handleAddressNotFoundException(AddressNotFoundException ex, WebRequest request){
+        ErrorObject errorObject = new ErrorObject();
+
+        errorObject.setStatusCode(HttpStatus.NOT_FOUND.value());
+        errorObject.setMessage(ex.getMessage());
+        errorObject.setTimestamp(new Date());
+
+        return new ResponseEntity<>(errorObject,HttpStatus.NOT_FOUND);
     }
 }

@@ -27,5 +27,6 @@ public class Person {
     private List<Car> carList = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("person")
     private Address address;
 }
