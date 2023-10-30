@@ -110,6 +110,24 @@ insert into person (name, age, address_id) values ('Roxie', 92, 52);
 insert into person (name, age, address_id) values ('Jephthah', 93, 53);
 insert into person (name, age, address_id) values ('Maynord', 20, 54);
 
+-- UZUPELNIENIE TABELI INTEREST
+insert into Interest (interest_type) values ('IT');
+insert into Interest (interest_type) values ('Cars');
+insert into Interest (interest_type) values ('Running');
+insert into Interest (interest_type) values ('Cycling');
+insert into Interest (interest_type) values ('Singing');
+insert into Interest (interest_type) values ('Sleeping');
+insert into Interest (interest_type) values ('Motorbikes');
+
+-- UZUPELNIENIE TABELI PERSON_INTEREST
+insert into Person_Interest (person_id, interest_id) values (1,1);
+insert into Person_Interest (person_id, interest_id) values (2,1);
+insert into Person_Interest (person_id, interest_id) values (2,2);
+insert into Person_Interest (person_id, interest_id) values (2,3);
+insert into Person_Interest (person_id, interest_id) values (5,2);
+insert into Person_Interest (person_id, interest_id) values (6,6);
+insert into Person_Interest (person_id, interest_id) values (7,7);
+
 -- UZUPELNIENIE TABELI CAR
 insert into car (brand, production_year, person_id) values ('Cadillac', 2005, 10);
 insert into car (brand, production_year, person_id) values ('Maserati', 2004, 17);

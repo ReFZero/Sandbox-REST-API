@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +31,10 @@ public class Person {
     @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("person")
     private Address address;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "person_interest",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "interest_id"))
+    private Set<Interest> interests = new HashSet<>();
 }
