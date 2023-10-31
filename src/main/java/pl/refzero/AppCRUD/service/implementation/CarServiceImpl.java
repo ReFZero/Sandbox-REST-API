@@ -12,7 +12,6 @@ import pl.refzero.AppCRUD.model.Person;
 import pl.refzero.AppCRUD.repository.CarRepository;
 import pl.refzero.AppCRUD.repository.PersonRepository;
 import pl.refzero.AppCRUD.service.CarService;
-import pl.refzero.AppCRUD.service.PersonService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class CarServiceImpl implements CarService {
         carFromDB.setBrand(car.getBrand());
         carFromDB.setProductionYear(car.getProductionYear());
         carFromDB.setPerson(car.getPerson());
-        return carRepository.save(carFromDB);
+        return carFromDB; // Dirty Checking
     }
 
     @Override

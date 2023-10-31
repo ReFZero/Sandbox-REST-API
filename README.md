@@ -12,7 +12,9 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - SpringDoc Open API
 - SpringFox Swagger UI
 #### Zmiany w ostatnim commicie:
-- Dodanie metody PATCH
+- Refaktoryzacja kodu
+  - Usuniecie adnotacji Column (automatyczna zamiana camelCase na sneak_case) oraz Table 
+  - Usuniecie metod - repository.save(obj) (mechanizm Dirty Checking. W sytuacji gdy pobrano obiekt z bazy i Hibernate wie o nim)
 #### Dodatkowe informacje:
 - Podstawowe operacje GET, POST, PUT, DELETE
 - Inicjalizacja bazy danych z pliku
@@ -26,9 +28,6 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - Dodano Query Methods (wyszukiwanie samochodów po id osoby)
 
 #### TO DO:
-- Refaktoryzacja kodu
-  - Usuniecie adnotacji Column (automatyczna zamiana camelCase na sneak_case) oraz Table
-  - Usuniecie metod - repository.save(obj) (mechanizm Dirty Checking. W sytuacji gdy pobrano obiekt z bazy i Hibernate wie o nim)
 - Dodanie testów jednostkowych
 - Dodanie relacji ManyToMany (bidirectional)
 - Dodanie DTO

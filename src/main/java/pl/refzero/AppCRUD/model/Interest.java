@@ -13,7 +13,6 @@ public class Interest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "interest_type")
     private String interestType;
 
 }
