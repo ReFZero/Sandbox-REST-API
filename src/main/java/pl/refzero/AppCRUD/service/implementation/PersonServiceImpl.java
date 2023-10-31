@@ -10,7 +10,6 @@ import pl.refzero.AppCRUD.model.Person;
 import pl.refzero.AppCRUD.repository.PersonRepository;
 import pl.refzero.AppCRUD.service.PersonService;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class PersonServiceImpl implements PersonService {
                 () -> new PersonNotFoundException("Person could not be found"));
         personFromDB.setName(person.getName());
         personFromDB.setAge(person.getAge());
-        return personRepository.save(personFromDB);
+        return personFromDB; // Dirty Checking
     }
 
     @Override

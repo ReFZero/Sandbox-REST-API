@@ -9,13 +9,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
+@Setter
 @EqualsAndHashCode
-@Entity
-@Table(name = "Person")
 public class Person {
 
     @Id
