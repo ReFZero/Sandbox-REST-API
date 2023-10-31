@@ -12,8 +12,7 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - SpringDoc Open API
 - SpringFox Swagger UI
 #### Zmiany w ostatnim commicie:
-- Dodano relacje ManyToMany unidirectional(Person -> Interest)
-- Aktualizacja struktury Bazy danych
+- Dodanie metody PATCH
 #### Dodatkowe informacje:
 - Podstawowe operacje GET, POST, PUT, DELETE
 - Inicjalizacja bazy danych z pliku
@@ -22,6 +21,7 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - Dodano Swagger
 - Dodano relacje OneToOne - bidirectional(Person <-> Address)
 - Dodano relacje OneToMany - bidirectional(Person <-> Car)
+- Dodano relacje ManyToMany unidirectional(Person -> Interest)
 - Dodano plik tekstowy PreRequestScriptPostman w którym znajduja sie skrypty do Postmana
 - Dodano Query Methods (wyszukiwanie samochodów po id osoby)
 
@@ -30,7 +30,6 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
   - Usuniecie adnotacji Column (automatyczna zamiana camelCase na sneak_case) oraz Table
   - Usuniecie metod - repository.save(obj) (mechanizm Dirty Checking. W sytuacji gdy pobrano obiekt z bazy i Hibernate wie o nim)
 - Dodanie testów jednostkowych
-- Dodanie metod np.PATH
 - Dodanie relacji ManyToMany (bidirectional)
 - Dodanie DTO
 

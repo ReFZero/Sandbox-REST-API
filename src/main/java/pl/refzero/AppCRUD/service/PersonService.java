@@ -10,4 +10,5 @@ List<Person> getAllPersons(int pageNo, int pageSize);
 Person createPerson(Person person);
 Person updatePerson(Person person, Long personId);
 void deletePersonById(Long personId);
+Person updatePersonName(String personName, Long id);
 }

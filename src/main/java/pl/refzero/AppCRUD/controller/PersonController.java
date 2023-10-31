@@ -22,7 +22,7 @@ public class PersonController {
 
     @GetMapping("/persons/{personId}")
     public ResponseEntity<Person> getOnePerson(@PathVariable(value = "personId") Long personId) {
-        return new ResponseEntity<>(personService.getPersonById(personId),HttpStatus.OK);
+        return new ResponseEntity<>(personService.getPersonById(personId), HttpStatus.OK);
     }
 
     @GetMapping("/persons")
@@ -30,7 +30,7 @@ public class PersonController {
     public ResponseEntity<List<Person>> getAllPersons(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize) {
-       return new ResponseEntity<>(personService.getAllPersons(pageNo,pageSize),HttpStatus.OK);
+        return new ResponseEntity<>(personService.getAllPersons(pageNo, pageSize), HttpStatus.OK);
     }
 
     @PostMapping("/persons/create")
@@ -42,13 +42,21 @@ public class PersonController {
     public ResponseEntity<Person> updatePerson(
             @RequestBody Person personUpdated,
             @PathVariable(value = "personId") Long personId) {
-    return new ResponseEntity<>(personService.updatePerson(personUpdated,personId),HttpStatus.OK);
+        return new ResponseEntity<>(personService.updatePerson(personUpdated, personId), HttpStatus.OK);
     }
 
     @DeleteMapping("/persons/{personId}/delete")
     public ResponseEntity<String> deletePerson(@PathVariable(value = "personId") Long personId) {
         personService.deletePersonById(personId);
-   return new ResponseEntity<>("Person deleted",HttpStatus.OK);
+        return new ResponseEntity<>("Person deleted", HttpStatus.OK);
+    }
+
+    @PatchMapping("/persons/{personId}/update")
+    //Np: "api/persons/5/update?personName=John"
+    public ResponseEntity<Person> updatePersonName(
+            @RequestParam(name = "personName") String personName,
+            @PathVariable(name = "personId") Long personId) {
+        return new ResponseEntity<>(personService.updatePersonName(personName, personId), HttpStatus.OK);
     }
 }
 

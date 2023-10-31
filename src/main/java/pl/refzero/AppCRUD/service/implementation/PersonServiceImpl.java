@@ -57,4 +57,11 @@ public class PersonServiceImpl implements PersonService {
         personRepository.delete(person);
     }
 
+    @Override
+    public Person updatePersonName(String personName, Long personId) {
+        Person personFromDB = personRepository.findById(personId).orElseThrow(()->new PersonNotFoundException("Person could not be found"));
+        personFromDB.setName(personName);
+        return personFromDB;
+    }
+
 }

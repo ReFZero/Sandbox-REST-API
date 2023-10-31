@@ -32,7 +32,7 @@ public class Person {
     @JsonIgnoreProperties("person")
     private Address address;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "person_interest",
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "interest_id"))
