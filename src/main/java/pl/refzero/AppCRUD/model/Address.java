@@ -10,6 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

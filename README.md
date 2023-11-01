@@ -11,12 +11,12 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - Lombok
 - SpringDoc Open API
 - SpringFox Swagger UI
+- JUnit 5
 #### Zmiany w ostatnim commicie:
-- Refaktoryzacja kodu
-  - Usuniecie adnotacji Column (automatyczna zamiana camelCase na sneak_case) oraz Table 
-  - Usuniecie metod - repository.save(obj) (mechanizm Dirty Checking. W sytuacji gdy pobrano obiekt z bazy i Hibernate wie o nim)
+- Dodano Buildery
+- Dodano proste testy jednostkowe
 #### Dodatkowe informacje:
-- Podstawowe operacje GET, POST, PUT, DELETE
+- Podstawowe operacje GET, POST, PUT, DELETE, PATCH
 - Inicjalizacja bazy danych z pliku
 - Endpointy zgodne ze standardem
 - Dodano Lombok
@@ -28,7 +28,7 @@ Aplikacja umożliwiająca podstawowe operacje CRUD
 - Dodano Query Methods (wyszukiwanie samochodów po id osoby)
 
 #### TO DO:
-- Dodanie testów jednostkowych
+- Uzycie Mockito
 - Dodanie relacji ManyToMany (bidirectional)
 - Dodanie DTO
 
