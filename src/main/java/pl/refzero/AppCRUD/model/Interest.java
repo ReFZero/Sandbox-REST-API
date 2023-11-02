@@ -9,6 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class Interest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
